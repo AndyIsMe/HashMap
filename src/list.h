@@ -1,12 +1,15 @@
 #ifndef _LIST_H
 #define _LIST_H
+#include "data.h"
+#include "compare.h"
+#include "integercompare.h"
 
 typedef struct Item Item;
 typedef struct LinkedList LinkedList;
 
 struct Item {
   Item *next;
-  void *data;
+  Data *data;
 };
 
 struct LinkedList{
@@ -15,9 +18,11 @@ struct LinkedList{
   int len;
 };
 
-void listInit(LinkedList *list);
-void listAdd(LinkedList *list,Item *item);
+void ListInit(LinkedList *list);
+void listAdd(LinkedList *list,Item *item/*,void *data,uint32_t key,Compare compareFunc*/);
 void listInit1(LinkedList *list,Item *item);
-Item* removeFirst(LinkedList *list);
-Item* removeByNameAndLast(LinkedList *list,char *name);
+//Item *ListRemove(LinkedList *list,uint32_t key,Compare compareFunc);
+void *ListRemove(LinkedList *list,uint32_t key, Compare compareFunc);
+Item *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc);
+void createItem(Item *item, void *data, Item *next);
 #endif // _LIST_H

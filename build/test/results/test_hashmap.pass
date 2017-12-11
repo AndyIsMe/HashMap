@@ -3,14 +3,26 @@
   :path: test
   :file: test_hashmap.c
 :successes:
-- :test: test_hashmap_NeedToImplement
-  :line: 10
+- :test: test_hashmap_
+  :line: 12
+  :message: ''
+- :test: test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted
+  :line: 23
+  :message: ''
+- :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted
+  :line: 46
+  :message: ''
+- :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search
+  :line: 70
+  :message: ''
+- :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete
+  :line: 89
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 1
+  :total: 5
+  :passed: 5
   :failed: 0
   :ignored: 0
 :stdout: []

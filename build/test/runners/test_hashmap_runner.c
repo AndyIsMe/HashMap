@@ -30,7 +30,11 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_hashmap_NeedToImplement(void);
+extern void test_hashmap_(void);
+extern void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted(void);
+extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted(void);
+extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search(void);
+extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete(void);
 
 
 /*=======Test Reset Option=====*/
@@ -46,7 +50,11 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_hashmap.c");
-  RUN_TEST(test_hashmap_NeedToImplement, 10);
+  RUN_TEST(test_hashmap_, 12);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted, 23);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted, 46);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search, 70);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete, 89);
 
   return (UnityEnd());
 }

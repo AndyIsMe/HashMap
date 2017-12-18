@@ -1,15 +1,22 @@
 #include "integercompare.h"
 #include "hashmap.h"
+#include <string.h>
 
 
 int IntKeyCompare(uint32_t key,Data *data)
 {
-  return key == data->key;
+  if(key > data->key){
+    return 1;
+  }
+  else if(key < data->key)
+  {
+    return -1;
+  }
+  else{
+  return 0;
+}
 }
 
 int IntCompare(int value,int refValue){
-  if(value == refValue)
-   return TRUE;
-  else
-    return FALSE;
+  return strcmp(value,refValue);
 }

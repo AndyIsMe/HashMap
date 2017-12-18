@@ -19,18 +19,18 @@ void listInit1(LinkedList *list,Item *item){
 
 void listAdd(LinkedList *list,Item *item/*,void *data,uint32_t key,Compare compareFunc*/){
     // Implement your code here...
-    if (list->head == NULL){
+    if (list->head == NULL)
+    {
       list->head = item;
       list->tail = item;
-	  list->len = 1;
-
     }
-    else {
+    else
+    {
 	  list->tail->next = item;
       list->tail = item;
-      list->len+=1;
-      item->next = NULL;
     }
+    list->len+=1;
+    item->next = NULL;
 
 }
 
@@ -39,7 +39,7 @@ void createItem(Item *item, void *data, Item *next){
   item->next = next;
 }
 
-Item *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc){
+Data *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc){
   	Item *TempToPoint1 = NULL ;
   	Item *TempToPoint2 = list->head;
 
@@ -48,32 +48,21 @@ Item *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc){
 
   	else
   	{
-  		while(compareFunc((void*)key,(void *)&(((Data *)TempToPoint2->data))->key)!=1)
+  		while(compareFunc((void*)key,(void *)&(((Data *)TempToPoint2->data))->key)!=0)
   		{
   			TempToPoint1 = TempToPoint2;
   			TempToPoint2 = TempToPoint2->next;
+        if(TempToPoint2 == NULL){
+          break;
+        }
   		}
-
+      if(TempToPoint2 == NULL){
+        return NULL;
+      }
+      else
         return TempToPoint2->data;
     }
 }
-/*
-void listSearch(Linked *list , uint32_t key,Compare compareFunc){
-  ListElement *elem;
-  for(elem = list->head; elem != NULL ; elem = elem->next);
-}*/
-/*
-Item *ListRemove(LinkedList *list ,uint32_t key,Compare compareFunc){
-  if(list->head == NULL){
-    return NULL;
-  }
-  else
-  {
-    list->head = list->head->next;
-    list->len--;
-  }
-  return ;
-}*/
 
 Item *removeFirst(LinkedList *list){
 
@@ -86,17 +75,53 @@ Item *removeFirst(LinkedList *list){
 	}
 }
 
-void *ListRemove(LinkedList *list,uint32_t key, Compare compareFunc){
+void ListRemove(LinkedList *list,uint32_t key, Compare compareFunc){
 	Item *Initial = NULL;
 	Item *Now = list->head;
 
 	if(list->head == NULL){
 		return NULL;
 	}
-		while(compareFunc((void*)key,(void *)&(((Data *)Now->data))->key)!=1){
+		while(compareFunc((void*)key,(void *)&(((Data *)Now->data))->key)!=0){
 			Initial = Now;
 			Now = Now->next;
-	}
+      if(Now == NULL){
+        break;
+      }
+    }
+
+   if(Now==NULL)
+   {
+	   //no data matched until last node
+	   Now=NULL;
+   }
+   else
+   {
+	   if(Initial==NULL)
+	   {
+		   //the data is the head
+		   removeFirst(list);
+	   }
+	   else if(Now==list->tail)
+	   {
+		   //the item is tail
+		   list->tail=Initial;
+		   list->tail->next=NULL;
+		   list->len--;
+	   }
+
+	   else
+	   {
+		   //the item is in between 2 node
+		   Initial->next=Now->next;
+		   list->len--;
+	   }
+   }
+}
+    /*
+    if(Now==NULL){
+      list=list;
+    }
 		if(Now==list->tail){			//If my 'Now' is equal to my last one
 			list->tail = Initial;		//I'm able to proceed on deleting the last data
 			Initial->next = NULL;
@@ -104,15 +129,22 @@ void *ListRemove(LinkedList *list,uint32_t key, Compare compareFunc){
 		}
 		else if(Now == list->head){
       if(list->head == list->tail)	//If my "Initial' is equal to NULL from the beginning
-			removeFirst(list);			//It fulfills the criteria of the remove 1st data from the function above
+			ListInit(list);
+    else{
+        Now = Now->next;
+				list->head = Now;
+				list->len--;
+    }
+  }//It fulfills the criteria of the remove 1st data from the function above
       else
       {
-        list->head = Now->next;
-        list->len--;
+        if(Now == NULL){
+          Now = NULL;
+        }
+        else{
+  		  Initial->next = Now->next;
+  		  list->len--;
       }
-		}									//I'm able to proceed on deleting the first data
-		else{
-			Initial->next = Now->next;		//If neither my 'Now' is equal to my last one nor my 'Initial' is equal to the first one
-			list->len--;					//Obviously , both 'Now' and 'Initial' is equal to the middle position of the data
-		}									//Thus,I'm able to proceed on deleting the middle data
+  	   }							//Thus,I'm able to proceed on deleting the middle data
 }
+*/

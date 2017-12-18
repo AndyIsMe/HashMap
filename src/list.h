@@ -19,10 +19,10 @@ struct LinkedList{
 };
 
 void ListInit(LinkedList *list);
-void listAdd(LinkedList *list,Item *item/*,void *data,uint32_t key,Compare compareFunc*/);
+void listAdd(LinkedList *list,Item *item);
 void listInit1(LinkedList *list,Item *item);
 //Item *ListRemove(LinkedList *list,uint32_t key,Compare compareFunc);
-void *ListRemove(LinkedList *list,uint32_t key, Compare compareFunc);
-Item *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc);
+void ListRemove(LinkedList *list,uint32_t key, Compare compareFunc);
+Data *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc);
 void createItem(Item *item, void *data, Item *next);
 #endif // _LIST_H

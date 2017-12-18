@@ -11,7 +11,7 @@
 #define TRUE          0
 #define FALSE         1
 
-typedef int(*compare)(void *data,void **refdata);
+//typedef int(*compare)(void *data,void **refdata);
 typedef struct HashTable HashTable;
 
 struct HashTable {
@@ -22,8 +22,11 @@ struct HashTable {
 
 void hashMapinit(HashTable *table,int size);
 void _hashMapAdd(HashTable *table,void *data,uint32_t key,int index,Compare compareFunc);
-void *_hashMapSearch(HashTable *table,void *data,uint32_t key,int index,Compare compareFunc);
-void *_hashMapDelete(HashTable *table,uint32_t key,int index,Compare compareFunc);
+void *_hashMapSearch(HashTable *table,uint32_t key,int index,Compare compareFunc);
+void _hashMapDelete(HashTable *table,uint32_t key,int index,Compare compareFunc);
 uint32_t hashUsingModulo(uint32_t value,uint32_t size);
+void hashMapAddInteger(HashTable *table,void *data,uint32_t key);
+void *hashMapSearchInteger(HashTable *table,void *data,uint32_t key);
+void hashMapDeleteInteger(HashTable *table,void *data);
 
 #endif // _HASHMAP_H

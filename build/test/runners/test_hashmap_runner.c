@@ -35,6 +35,7 @@ extern void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_in
 extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted(void);
 extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search(void);
 extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete(void);
+extern void test_HashMapAdd_implementation(void);
 
 
 /*=======Test Reset Option=====*/
@@ -53,8 +54,9 @@ int main(void)
   RUN_TEST(test_hashmap_, 12);
   RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted, 23);
   RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted, 46);
-  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search, 70);
-  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete, 89);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search, 65);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete, 84);
+  RUN_TEST(test_HashMapAdd_implementation, 107);
 
   return (UnityEnd());
 }

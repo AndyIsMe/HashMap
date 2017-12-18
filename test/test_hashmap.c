@@ -49,17 +49,12 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
   hashMapinit(&hashTable,10);
 
   David = dataCreate(5,"David");
-  _hashMapAdd(&hashTable,(void*)David,David->key,7,(Compare)IntKeyCompare);
+  _hashMapAdd(&hashTable,(void*)David,5,7,(Compare)IntKeyCompare);
   Ali = dataCreate(5,"Ali");
-  _hashMapAdd(&hashTable,(void*)Ali,Ali->key,7,(Compare)IntKeyCompare);
+  _hashMapAdd(&hashTable,(void*)Ali,5,7,(Compare)IntKeyCompare);
 
   TEST_ASSERT_NOT_NULL(hashTable.list[7].head);
   data = (Data *)(hashTable.list[7].head->data);
-  TEST_ASSERT_EQUAL(5,data->key);
-  TEST_ASSERT_EQUAL_STRING("David",data->name);
-
-  TEST_ASSERT_NOT_NULL(hashTable.list[7].head->next);
-  data = (Data *)(hashTable.list[7].head->next->data);
   TEST_ASSERT_EQUAL(5,data->key);
   TEST_ASSERT_EQUAL_STRING("Ali",data->name);
 
@@ -78,9 +73,9 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
   _hashMapAdd(&hashTable,(void*)Ali,Ali->key,7,(Compare)IntKeyCompare);
 
   TEST_ASSERT_NOT_NULL(hashTable.list[7].head);
-  data = (Data *)_hashMapSearch(&hashTable,(void *)David,David->key,7,(Compare)IntKeyCompare);
-  TEST_ASSERT_EQUAL(5,data->key);
-  TEST_ASSERT_EQUAL_STRING("David",data->name);
+  data = (Data *)_hashMapSearch(&hashTable,Ali->key,7,(Compare)IntKeyCompare);
+  TEST_ASSERT_EQUAL(3,data->key);
+  TEST_ASSERT_EQUAL_STRING("Ali",data->name);
 
   free(David);
   free(Ali);
@@ -96,34 +91,31 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
   Ali = dataCreate(3,"Ali");
   _hashMapAdd(&hashTable,(void*)Ali,Ali->key,7,(Compare)IntKeyCompare);
 
+  TEST_ASSERT_EQUAL(hashTable.list[7].head->data->name,"David");
+  TEST_ASSERT_EQUAL(hashTable.list[7].tail->data->name,"Ali");
   TEST_ASSERT_NOT_NULL(hashTable.list[7].head->next);
-  data = (Data *)_hashMapDelete(&hashTable,Ali->key,7,(Compare)IntKeyCompare);
+  _hashMapDelete(&hashTable,3,7,(Compare)IntKeyCompare);
+  TEST_ASSERT_EQUAL(hashTable.list[7].head->data->name,"David");
+  TEST_ASSERT_EQUAL(hashTable.list[7].tail->data->name,"David");
   TEST_ASSERT_NULL(hashTable.list[7].head->next);
-  //TEST_ASSERT_EQUAL_STRING("David",data->name);
+  TEST_ASSERT_NOT_NULL(hashTable.list[7].head);
 
   free(David);
   free(Ali);
 }
-/*
-void test_HashMap_Given_(void){
-  Data *data,*David,*Ali;
+
+void test_HashMapAdd_implementation(void){
+  Data *data,*David;
   HashTable hashTable;
   hashMapinit(&hashTable,10);
 
-  David = dataCreate(5,"David");
-  _hashMapAdd(&hashTable,(void*)David,data->key,7,(Compare)IntKeyCompare);
-  Ali = dataCreate(5,"Ali");
-  _hashMapAdd(&hashTable,(void*)Ali,data->key,7,(Compare)IntKeyCompare);
+  David = dataCreate(1,"David");
+  hashMapAddInteger(&hashTable,(void*)David,1);
 
-  TEST_ASSERT_NOT_NULL(hashTable.list[7].head);
-  data = (Data *)(hashTable.list[7].head->data);
-  TEST_ASSERT_EQUAL(5,data->key);
+  TEST_ASSERT_NOT_NULL(hashTable.list[1].head);
+  data = (Data *)(hashTable.list[1].head->data);
+  TEST_ASSERT_EQUAL(1,data->key);
   TEST_ASSERT_EQUAL_STRING("David",data->name);
 
-  TEST_ASSERT_NOT_NULL(hashTable.list[7].head->next);
-  data = (Data *)(hashTable.list[7].head->next->data);
-  TEST_ASSERT_EQUAL(3,data->key);
-  TEST_ASSERT_EQUAL_STRING("Ali",data->name);
-
-  free(data);
-}*/
+  free(David);
+}

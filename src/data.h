@@ -5,9 +5,9 @@
 typedef struct Data Data;
 struct Data{
   uint32_t key;
-  char *name;
+  void *name;
 };
 
-Data *dataCreate(uint32_t key, char *name);
+Data *dataCreate(uint32_t key, void *name);
 
 #endif // _DATA_H

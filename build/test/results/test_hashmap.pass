@@ -13,16 +13,19 @@
   :line: 46
   :message: ''
 - :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search
-  :line: 70
+  :line: 65
   :message: ''
 - :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete
-  :line: 89
+  :line: 84
+  :message: ''
+- :test: test_HashMapAdd_implementation
+  :line: 107
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout: []

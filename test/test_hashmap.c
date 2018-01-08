@@ -16,11 +16,18 @@ void test_hashmap_(void)
     hashMapinit(&hashtable,5);
     _hashMapAdd(&hashtable,(void *)&data,5,5,(Compare)IntKeyCompare);
     TEST_ASSERT_NOT_NULL(hashtable.list);
-    //TEST_ASSERT_NOT_NULL(hashtable.list[5]);
-    //TEST_ASSERT_EQUAL(hashtable.list[5].data,5);
 }
 
-void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted(void){
+/*
+*     index  ------
+*            |    |
+*            |    |
+*       7    |  * | -->5(Ali)
+*            |    |
+*            |    |
+*/
+
+void test_HashMap_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted(void){
   Data *data;
   HashTable hashTable;
   hashMapinit(&hashTable,10);
@@ -35,15 +42,15 @@ void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted(
 }
 
 /*
-*     index  ------
-*            |    |
-*            |    |
-*       7    |  * | -->5->3
-*            |    |
-*            |    |
+*     index  ------ 7                      index  ------ 7
+*            |    |                               |    |
+*            |    |  added same key               |    |
+*       5    |  * | -->5(David)  -------->  5     |  * |-----> 5(Ali)
+*            |    |                               |    |
+*            |    |                               |    |
 */
 
-void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted(void){
+void test_HashMap_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David(void){
   Data *data,*David,*Ali;
   HashTable hashTable;
   hashMapinit(&hashTable,10);
@@ -62,7 +69,7 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
   free(Ali);
 }
 
-void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search(void){
+void test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_expect_David_and_Ali_inserted_with_Search(void){
   Data *data,*David,*Ali;
   HashTable hashTable;
   hashMapinit(&hashTable,10);
@@ -81,7 +88,16 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
   free(Ali);
 }
 
-void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete(void){
+/*
+*     index  ------                        index  ------                                            index ------
+*            |    |                               |    |                                                  |    |
+*            |    |                               |    |                                Delete Ali        |    |
+*       7    |  * | -->5(David)  -------->  7     |  * |-----> 5(David) ---->3(Ali)       --->       7    |  * |----->5(David)
+*            |    |                               |    |                                                  |    |
+*            |    |                               |    |                                                  |    |
+*/
+
+void test_HashMap_Given_empty_hash_table_and_David_and_Ali_is_added_with_Deletion_of_Ali_expect_David_(void){
   Data *data,*David,*Ali;
   HashTable hashTable;
   hashMapinit(&hashTable,10);
@@ -103,8 +119,9 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
   free(David);
   free(Ali);
 }
+/*_________________________Test HashMap Integer______________________________________________*/
 
-void test_HashMapAdd_implementation(void){
+void test_hashMapAddInteger_Given_empty_hash_table_and_value_1_is_added_expect_1_is_inserted(void){
   Data *data,*David;
   HashTable hashTable;
   hashMapinit(&hashTable,10);
@@ -118,4 +135,81 @@ void test_HashMapAdd_implementation(void){
   TEST_ASSERT_EQUAL_STRING("David",data->name);
 
   free(David);
+}
+
+void test_hashMapAddInteger_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted(void){
+  Data *data,*David,*Ali;
+  HashTable hashTable;
+  hashMapinit(&hashTable,10);
+
+  David = dataCreate(5,(int *)5);
+    hashMapAddInteger(&hashTable,(void*)David,5);
+  Ali = dataCreate(3,(int *)3);
+    hashMapAddInteger(&hashTable,(void*)Ali,3);
+
+  TEST_ASSERT_NOT_NULL(hashTable.list[5].head);
+  data = (Data *)(hashTable.list[5].head->data);
+  TEST_ASSERT_EQUAL(5,data->key);
+  TEST_ASSERT_EQUAL(5,data->name);
+
+  TEST_ASSERT_NOT_NULL(hashTable.list[5].head->next);
+  data = (Data *)(hashTable.list[5].head->next->data);
+  TEST_ASSERT_EQUAL(3,data->key);
+  TEST_ASSERT_EQUAL(3,data->name);
+
+  free(David);
+  free(Ali);
+}
+
+/*_________________________Test HashMap String______________________________________________*/
+
+/*
+*     index  ------
+*            |    |
+*            |    |
+*       7    |  * | -->5(Ali)
+*            |    |
+*            |    |
+*/
+
+void test_hashMapAddString_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted(void){
+  Data *data;
+  HashTable hashTable;
+  hashMapinit(&hashTable,10);
+  data = dataCreate(5,"David");
+  _hashMapAddString(&hashTable,(void*)data,7);
+
+  TEST_ASSERT_NOT_NULL(hashTable.list[7].head);
+  data = (Data *)(hashTable.list[7].head->data);
+  TEST_ASSERT_EQUAL(5,data->key);
+  TEST_ASSERT_EQUAL_STRING("David",data->name);
+  free(data);
+}
+
+/*
+*     index  ------ 7                      index  ------ 7
+*            |    |                               |    |
+*            |    |  added same key               |    |
+*       5    |  * | -->5(David)  -------->  5     |  * |-----> 5(Ali)
+*            |    |                               |    |
+*            |    |                               |    |
+*/
+
+void test_hashMapAddString_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David(void){
+  Data *data,*David,*Ali;
+  HashTable hashTable;
+  hashMapinit(&hashTable,10);
+
+  David = dataCreate(5,"David");
+  _hashMapAddString(&hashTable,(void*)David,5);
+  Ali = dataCreate(5,"Ali");
+  _hashMapAddString(&hashTable,(void*)Ali,5);
+
+  TEST_ASSERT_NOT_NULL(hashTable.list[5].head);
+  data = (Data *)(hashTable.list[5].head->data);
+  TEST_ASSERT_EQUAL(5,data->key);
+  TEST_ASSERT_EQUAL_STRING("Ali",data->name);
+
+  free(David);
+  free(Ali);
 }

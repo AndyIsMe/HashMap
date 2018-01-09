@@ -4,22 +4,22 @@
   :file: test_hashmap.c
 :successes:
 - :test: test_hashmap_
-  :line: 12
+  :line: 14
   :message: ''
-- :test: test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted
-  :line: 23
+- :test: test_HashMap_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted
+  :line: 32
   :message: ''
-- :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted
-  :line: 46
+- :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David
+  :line: 55
   :message: ''
-- :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search
-  :line: 65
+- :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_expect_David_and_Ali_inserted_with_Search
+  :line: 74
   :message: ''
-- :test: test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete
-  :line: 84
+- :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_is_added_with_Deletion_of_Ali_expect_David_
+  :line: 102
   :message: ''
-- :test: test_HashMapAdd_implementation
-  :line: 107
+- :test: test_hashMapAddString_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted
+  :line: 177
   :message: ''
 :failures: []
 :ignores: []

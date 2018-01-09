@@ -25,4 +25,5 @@ void listInit1(LinkedList *list,Item *item);
 void ListRemove(LinkedList *list,uint32_t key, Compare compareFunc);
 Data *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc);
 void createItem(Item *item, void *data, Item *next);
+void ListAddOrReplace(LinkedList *list, Item *item,uint32_t key,Compare compareFunc);
 #endif // _LIST_H

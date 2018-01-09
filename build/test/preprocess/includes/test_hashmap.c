@@ -4,4 +4,5 @@
 - list.h
 - integercompare.h
 - data.h
+- hashmapstring.h
 - build/temp/_test_hashmap.c

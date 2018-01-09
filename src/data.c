@@ -9,6 +9,4 @@ Data *dataCreate(uint32_t key, void *name){
     data->key = key;
     data->name = name;
 
-    return data;
-
 }

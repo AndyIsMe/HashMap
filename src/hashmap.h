@@ -25,8 +25,6 @@ void _hashMapAdd(HashTable *table,void *data,uint32_t key,int index,Compare comp
 void *_hashMapSearch(HashTable *table,uint32_t key,int index,Compare compareFunc);
 void _hashMapDelete(HashTable *table,uint32_t key,int index,Compare compareFunc);
 uint32_t hashUsingModulo(uint32_t value,uint32_t size);
-void hashMapAddInteger(HashTable *table,void *data,uint32_t key);
-void *hashMapSearchInteger(HashTable *table,void *data,uint32_t key);
-void hashMapDeleteInteger(HashTable *table,void *data);
+
 
 #endif // _HASHMAP_H

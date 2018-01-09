@@ -16,53 +16,46 @@ void hashMapinit(HashTable *table,int size){
 void _hashMapAdd(HashTable *table,void *data,uint32_t key,int index,Compare compareFunc){
   Item *newItem = (Item *)malloc(sizeof(Item));
   createItem(newItem,data,NULL);
-  if(ListSearch(&table->list[index],key,(Compare)compareFunc) == NULL)
-  listAdd(&table->list[index],newItem);
-  else
-  {
+  //Data *find = ListSearch(&(table->list)[index],key,(Compare)compareFunc);
+  if(index<table->size)
+  ListSearch(&(table->list)[index],key,(Compare)compareFunc);
   ListRemove(&table->list[index],key,(Compare)compareFunc);
-  listAdd(&table->list[index],newItem);
-  }
+  listAdd(&(table->list)[index],newItem);
+
 }
 
 void *_hashMapSearch(HashTable *table,uint32_t key,int index,Compare compareFunc ){
-  //if(index >= table->size)
-  //return NULL;
+  if(&table->list->head !=  NULL)
   return ListSearch(&table->list[index],key,(Compare)compareFunc);
 }
 
 void _hashMapDelete(HashTable *table,uint32_t key,int index,Compare compareFunc){
-  //if(index >= table->size)
-  //return NULL;
+  if(&table->list->head !=  NULL)
   return ListRemove(&table->list[index],key,(Compare)compareFunc);
 
-
-//Free some memory
-//....
 }
 
 uint32_t hashUsingModulo(uint32_t value,uint32_t size){
   return value % size;
 }
 
-void hashMapAddInteger(HashTable *table,void *data,uint32_t key){
-  //Compute hash value
+void hashMapAddInteger(HashTable *table,int *data,uint32_t key){
+
   int hashValue = hashUsingModulo(key,table->size);
+  //Data *info=dataCreate(key,(void *)data);
   _hashMapAdd(table,data,key,hashValue,(Compare)IntKeyCompare);
 }
 
 void *hashMapSearchInteger(HashTable *table,void *data,uint32_t key){
-  //Compute hash value
-  //hash value = hash(....);
+
   uint32_t hashValue = hashUsingModulo(data,table->size);
   _hashMapSearch(table,key,hashValue,(Compare)IntKeyCompare);
-  //_hashMapSearch(table,data,hashValue,integerCompare)
+
 }
 
 void hashMapDeleteInteger(HashTable *table,void *data){
-  //Compute hash value
-  //hash value = hash(....);
+
   uint32_t hashValue = hashUsingModulo(data,table->size);
   _hashMapDelete(table,(void*)data,hashValue,(Compare)IntKeyCompare);
-  //_hashMapDelete(table,data,hashValue,integerCompare)
+
 }

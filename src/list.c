@@ -17,7 +17,7 @@ void listInit1(LinkedList *list,Item *item){
 }
 
 
-void listAdd(LinkedList *list,Item *item/*,void *data,uint32_t key,Compare compareFunc*/){
+void listAdd(LinkedList *list,Item *item){
     // Implement your code here...
     if (list->head == NULL)
     {
@@ -64,6 +64,35 @@ Data *ListSearch(LinkedList *list,uint32_t key, Compare compareFunc){
     }
 }
 
+void ListAddOrReplace(LinkedList *list, Item *item,uint32_t key,Compare compareFunc)
+{
+    int X =0;
+    Item *Temp = list->head;
+    while(Temp != NULL){
+    if(compareFunc((void *)key,(void *)&(((Data *)(Temp->data))->key))==1){
+      ((Data *)(Temp->data))->name =((Data *)(item->data))->name;
+      X=1;
+    }
+      Temp = Temp->next;
+    }
+
+  if(list->len==0){
+    list->head = item;
+    list->tail = item;
+    list->len  = 1;
+    item->next = NULL;
+  }
+  else{
+    if(X==0){
+    list->tail->next=item;
+    list->tail = item;
+    list->len += 1;
+    item->next = NULL;
+  }
+  }
+
+}
+
 Item *removeFirst(LinkedList *list){
 
 	if(list->head == NULL){
@@ -79,9 +108,8 @@ void ListRemove(LinkedList *list,uint32_t key, Compare compareFunc){
 	Item *Initial = NULL;
 	Item *Now = list->head;
 
-	if(list->head == NULL){
-		return NULL;
-	}
+
+  if(Now !=NULL)
 		while(compareFunc((void*)key,(void *)&(((Data *)Now->data))->key)!=0){
 			Initial = Now;
 			Now = Now->next;

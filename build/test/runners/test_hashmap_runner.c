@@ -31,11 +31,11 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_hashmap_(void);
-extern void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted(void);
-extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted(void);
-extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search(void);
-extern void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete(void);
-extern void test_HashMapAdd_implementation(void);
+extern void test_HashMap_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted(void);
+extern void test_HashMap_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David(void);
+extern void test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_expect_David_and_Ali_inserted_with_Search(void);
+extern void test_HashMap_Given_empty_hash_table_and_David_and_Ali_is_added_with_Deletion_of_Ali_expect_David_(void);
+extern void test_hashMapAddString_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted(void);
 
 
 /*=======Test Reset Option=====*/
@@ -51,12 +51,12 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_hashmap.c");
-  RUN_TEST(test_hashmap_, 12);
-  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted, 23);
-  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted, 46);
-  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search, 65);
-  RUN_TEST(test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete, 84);
-  RUN_TEST(test_HashMapAdd_implementation, 107);
+  RUN_TEST(test_hashmap_, 14);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted, 32);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David, 55);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_expect_David_and_Ali_inserted_with_Search, 74);
+  RUN_TEST(test_HashMap_Given_empty_hash_table_and_David_and_Ali_is_added_with_Deletion_of_Ali_expect_David_, 102);
+  RUN_TEST(test_hashMapAddString_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted, 177);
 
   return (UnityEnd());
 }

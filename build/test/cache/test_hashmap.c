@@ -1,4 +1,5 @@
 #include "build/temp/_test_hashmap.c"
+#include "hashmapstring.h"
 #include "data.h"
 #include "integercompare.h"
 #include "list.h"
@@ -32,17 +33,11 @@ void test_hashmap_(void)
 
    ((void *)0)
 
-   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(18))));};
-
-
-
-
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(20))));};
 
 }
 
-
-
-void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted(void){
+void test_HashMap_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted(void){
 
   Data *data;
 
@@ -60,7 +55,7 @@ void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted(
 
  ((void *)0)
 
- )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(30))));};
+ )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(39))));};
 
   data = (Data *)(hashTable.list[7].head->data);
 
@@ -68,19 +63,19 @@ void test_HashMap_Given_empty_hash_table_and_value_5_is_added_expect_5_inserted(
 
  ((void *)0)
 
- ), (UNITY_UINT)(32), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(41), UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualString((const char*)(("David")), (const char*)((data->name)), (
 
  ((void *)0)
 
- ), (UNITY_UINT)(33));
+ ), (UNITY_UINT)(42));
 
   free(data);
 
 }
 
-void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted(void){
+void test_HashMap_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David(void){
 
   Data *data,*David,*Ali;
 
@@ -104,7 +99,7 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
  ((void *)0)
 
- )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(56))));};
+ )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(65))));};
 
   data = (Data *)(hashTable.list[7].head->data);
 
@@ -112,13 +107,13 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
  ((void *)0)
 
- ), (UNITY_UINT)(58), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(67), UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualString((const char*)(("Ali")), (const char*)((data->name)), (
 
  ((void *)0)
 
- ), (UNITY_UINT)(59));
+ ), (UNITY_UINT)(68));
 
 
 
@@ -130,7 +125,7 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
 
 
-void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Search(void){
+void test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_expect_David_and_Ali_inserted_with_Search(void){
 
   Data *data,*David,*Ali;
 
@@ -154,7 +149,7 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
  ((void *)0)
 
- )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(75))));};
+ )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(84))));};
 
   data = (Data *)_hashMapSearch(&hashTable,Ali->key,7,(Compare)IntKeyCompare);
 
@@ -162,13 +157,13 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
  ((void *)0)
 
- ), (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(86), UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualString((const char*)(("Ali")), (const char*)((data->name)), (
 
  ((void *)0)
 
- ), (UNITY_UINT)(78));
+ ), (UNITY_UINT)(87));
 
 
 
@@ -178,9 +173,7 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
 }
 
-
-
-void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted_with_Delete(void){
+void test_HashMap_Given_empty_hash_table_and_David_and_Ali_is_added_with_Deletion_of_Ali_expect_David_(void){
 
   Data *data,*David,*Ali;
 
@@ -204,19 +197,19 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
  ((void *)0)
 
- ), (UNITY_UINT)(94), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(112), UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualNumber((UNITY_INT)((hashTable.list[7].tail->data->name)), (UNITY_INT)(("Ali")), (
 
  ((void *)0)
 
- ), (UNITY_UINT)(95), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(113), UNITY_DISPLAY_STYLE_INT);
 
   if ((((hashTable.list[7].head->next)) != 
 
  ((void *)0)
 
- )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(96))));};
+ )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(114))));};
 
   _hashMapDelete(&hashTable,3,7,(Compare)IntKeyCompare);
 
@@ -224,25 +217,25 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
  ((void *)0)
 
- ), (UNITY_UINT)(98), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualNumber((UNITY_INT)((hashTable.list[7].tail->data->name)), (UNITY_INT)(("David")), (
 
  ((void *)0)
 
- ), (UNITY_UINT)(99), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_INT);
 
   if ((((hashTable.list[7].head->next)) == 
 
  ((void *)0)
 
- )) {} else {UnityFail( (((" Expected NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(100))));};
+ )) {} else {UnityFail( (((" Expected NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(118))));};
 
   if ((((hashTable.list[7].head)) != 
 
  ((void *)0)
 
- )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(101))));};
+ )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(119))));};
 
 
 
@@ -252,46 +245,40 @@ void test_HashMap_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and
 
 }
 
+void test_hashMapAddString_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted(void){
 
-
-void test_HashMapAdd_implementation(void){
-
-  Data *data,*David;
+  Data *data;
 
   HashTable hashTable;
 
   hashMapinit(&hashTable,10);
 
+  data = dataCreate(5,"David");
 
-
-  David = dataCreate(1,"David");
-
-  hashMapAddInteger(&hashTable,(void*)David,1);
+  _hashMapAddString(&hashTable,(void*)data,7);
 
 
 
-  if ((((hashTable.list[1].head)) != 
+  if ((((hashTable.list[7].head)) != 
 
  ((void *)0)
 
- )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(115))));};
+ )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(184))));};
 
-  data = (Data *)(hashTable.list[1].head->data);
+  data = (Data *)(hashTable.list[7].head->data);
 
-  UnityAssertEqualNumber((UNITY_INT)((1)), (UNITY_INT)((data->key)), (
+  UnityAssertEqualNumber((UNITY_INT)((5)), (UNITY_INT)((data->key)), (
 
  ((void *)0)
 
- ), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_INT);
+ ), (UNITY_UINT)(186), UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualString((const char*)(("David")), (const char*)((data->name)), (
 
  ((void *)0)
 
- ), (UNITY_UINT)(118));
+ ), (UNITY_UINT)(187));
 
-
-
-  free(David);
+  free(data);
 
 }

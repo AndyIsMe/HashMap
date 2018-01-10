@@ -6,26 +6,56 @@
 - :test: test_hashmap_
   :line: 14
   :message: ''
-- :test: test_HashMap_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted
+- :test: test_HashMap_Given_empty_hash_table_and_David_is_added_expect_David_inserted
   :line: 32
   :message: ''
+- :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_expect_David_and_Ali_inserted
+  :line: 53
+  :message: ''
 - :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David
-  :line: 55
+  :line: 85
   :message: ''
 - :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_expect_David_and_Ali_inserted_with_Search
-  :line: 74
+  :line: 104
   :message: ''
-- :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_is_added_with_Deletion_of_Ali_expect_David_
-  :line: 102
+- :test: test_HashMap_Given_empty_hash_table_and_David_and_Ali_are_added_with_Deletion_of_Ali_expect_David_
+  :line: 133
+  :message: ''
+- :test: test_hashMapAddInteger_Given_empty_hash_table_and_value_1_is_added_expect_1_is_inserted
+  :line: 157
+  :message: ''
+- :test: test_hashMapAddInteger_Given_empty_hash_table_and_value_5_and_3_is_added_expect_5_and_3_inserted
+  :line: 173
+  :message: ''
+- :test: test_hashMapAddInteger_Given_empty_hashtable_and_2_and_3_with_same_key_and_index_expect_3_to_overwrite_2
+  :line: 197
+  :message: ''
+- :test: test_hashMapAddInteger_Given_empty_hash_table_and_2_3_are_added_expect_2_3_inserted_with_Search
+  :line: 216
+  :message: ''
+- :test: test_hashMapDeleteInteger_Given_empty_hash_table_and_2_3_are_added_with_Deletion_of_3_expect_2
+  :line: 234
   :message: ''
 - :test: test_hashMapAddString_Given_empty_hash_table_and_Ali_is_added_expect_Ali_inserted
-  :line: 177
+  :line: 266
+  :message: ''
+- :test: test_hashMapAddString_Given_empty_hash_table_and_Ali_David_are_added_expect_Ali_David_inserted
+  :line: 287
+  :message: ''
+- :test: test_hashMapAddString_Given_empty_hash_table_and_David_and_Ali_with_same_key_and_index_expect_Ali_to_overwrite_David
+  :line: 318
+  :message: ''
+- :test: test_hashMapAddString_Given_empty_hash_table_and_Ali_David_are_added_expect_Ali_David_inserted_with_Search
+  :line: 337
+  :message: ''
+- :test: test_hashMapAddString_Given_empty_hash_table_and_Ali_David_are_added_with_Deletion_of_Ali_expect_David
+  :line: 362
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 16
+  :passed: 16
   :failed: 0
   :ignored: 0
 :stdout: []

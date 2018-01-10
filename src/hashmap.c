@@ -46,9 +46,9 @@ void hashMapAddInteger(HashTable *table,int *data,uint32_t key){
   _hashMapAdd(table,data,key,hashValue,(Compare)IntKeyCompare);
 }
 
-void *hashMapSearchInteger(HashTable *table,void *data,uint32_t key){
+void *hashMapSearchInteger(HashTable *table,uint32_t key){
 
-  uint32_t hashValue = hashUsingModulo(data,table->size);
+  uint32_t hashValue = hashUsingModulo(key,table->size);
   _hashMapSearch(table,key,hashValue,(Compare)IntKeyCompare);
 
 }
